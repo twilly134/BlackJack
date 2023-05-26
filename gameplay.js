@@ -89,6 +89,7 @@ let playersArr = [dealer, player1];
 
 // players not including the dealer
 let players = playersArr.slice(1);
+let cardDeck = [];
 
 
 // let cardDeck = [];
@@ -127,21 +128,37 @@ function getCardValue(player) {
 function hit()
 {
 
-    // get random card from deck
-    // subtract by the number of cards drawn
-    index = Math.floor(Math.random() * (52-cardsDrawn.length));
+    // add another player in the future
 
-    // put card in drawn cards deck
-    if(cardsDrawn.includes(cardDeck[index]) == false)
+    let notDrawn = true;
+
+    while(notDrawn)
     {
-        cardsDrawn.push(cardDeck[index]);
+        index = Math.floor(Math.random() * (52-cardsDrawn.length));
+
+        if(cardsDrawn.includes(cardDeck[index]) == false)
+        {
+            cardsDrawn.push(cardDeck[index]);
+            notDrawn = false;
+        }
+    
     }
 
-    // add another player in the future
     player1.playerDeck.push(cardDeck[index]);
-  
-    
 
+    // update card deck value for the player
+    cardValues(cardDeck[index], player1); 
+    
+    let cardImagesFolder = "playing-cards/";
+
+    let cardElement = document.createElement("img");
+    cardElement.src = cardImagesFolder+cardDeck[index];
+    cardElement.className = "card";
+
+    document.getElementById("player-cards-container").appendChild(cardElement);    
+
+    // update display value
+    displayDeckValue();
 
 }
 
@@ -182,7 +199,7 @@ function mainCardDraw()
     dealer.cardCount = 0;
 
     // shuffle the array/cards
-    let cardDeck = shuffleArray(card_names);
+    cardDeck = shuffleArray(card_names);
     console.log(cardDeck);
 
     // the initial cards drawn
@@ -231,6 +248,8 @@ function mainCardDraw()
     {
         displayCards(player);
     }
+
+    // if ace is drawn ask each time what the value of ace will be
 
 }    
 
