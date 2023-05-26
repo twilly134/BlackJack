@@ -1,0 +1,3 @@
+Dealer and player are the two players, will have a counter, a money amount for both players, could create two player objects. The card will be displayed onto the screen. 
+
+1. Functional code, not to worry much about the backend, console.log print statements to show output.
