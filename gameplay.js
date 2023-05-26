@@ -80,6 +80,8 @@ class Player
         this.deckValue = 0;
         // for counting cards
         this.cardCount = 0;
+        // player money
+        this.playerMoney = 0;
     }
 }
 
@@ -160,6 +162,29 @@ function hit()
     // update display value
     displayDeckValue();
 
+    // check if bust
+    gameLogic();
+
+
+}
+
+function gameLogic()
+{
+
+    for(player of players)
+    {
+        if(player.deckValue > 21)
+        {
+            document.getElementById("game-outcome").innerHTML = "BUST!";
+        }
+    }
+
+
+}
+
+function playerStay()
+{
+    // player hits the stay button, evaluate the game
 }
 
 function clearCards()
@@ -170,6 +195,8 @@ function clearCards()
     // Get all child image elements
     const dealerChildImages = dealerContainer.getElementsByTagName("img");
     const playerChildImages = playerContainer.getElementsByTagName("img");
+
+    document.getElementById("game-outcome").innerHTML = "";
 
 
     // Remove all child image elements
@@ -250,6 +277,7 @@ function mainCardDraw()
     }
 
     // if ace is drawn ask each time what the value of ace will be
+
 
 }    
 
