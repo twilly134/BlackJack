@@ -6,11 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="gameplay.js"></script>
 
+    <style>
+        .game-container {
+            text-align: center;
+        }
+
+        .card {
+            width: 100px;
+            height: 150px;
+            margin: 10px;
+            border: 1px solid black;
+        }
+
+        </style>
+
     <title>Document</title>
 </head>
 <body>
-    <button onclick="drawCard()">Draw Cards</button>
-    <button >Hit Me</button>
-    <button>Hold</button>
+
+    <div class="game-container">
+        <h1>Blackjack Game</h1>
+    
+        <!-- display cards -->
+        <div id="dealer-cards-container"></div>
+        <!-- display deck value -->
+        <div id="dealer-value"></div>
+
+        <!-- display cards -->
+        <div id="player-cards-container"></div>
+        <!-- display deck value -->
+        <div id="player-value"></div>
+
+        <button id="draw-cards" onclick="mainCardDraw()">Draw Cards</button>
+        <button id="hit-me" onclick="hit()">Hit Me</button>
+        <button id="stay">Stay</button>
+    </div>
+
+    
+
 </body>
 </html>
